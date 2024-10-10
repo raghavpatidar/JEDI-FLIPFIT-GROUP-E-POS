@@ -1,8 +1,6 @@
 package com.flipkart.client;
 
 import com.flipkart.bean.FlipFitPayments;
-import com.flipkart.dao.FlipFitPaymentsDAOImpl;
-import com.flipkart.dao.interfaces.IFlipFitPaymentsDAO;
 
 import java.util.Scanner;
 

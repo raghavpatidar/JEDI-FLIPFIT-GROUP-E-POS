@@ -2,8 +2,6 @@ package com.flipkart.business;
 
 import com.flipkart.bean.*;
 import com.flipkart.business.interfaces.IFlipFitGymOwner;
-import com.flipkart.dao.*;
-import com.flipkart.dao.interfaces.IFlipFitGymOwnerDAO;
 import com.flipkart.exceptions.InvalidChoiceException;
 import java.util.List;
 

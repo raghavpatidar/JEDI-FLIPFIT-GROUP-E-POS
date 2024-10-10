@@ -1,27 +1,16 @@
 package com.flipkart.client;
-
 import com.flipkart.bean.FlipFitGymCentre;
-import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.bean.FlipFitSlots;
 import com.flipkart.bean.FlipFitUser;
-//import com.flipkart.business.FlipFitGymCentreBusiness;
 import com.flipkart.business.*;
-import com.flipkart.dao.*;
 import com.flipkart.exceptions.InvalidChoiceException;
-
-import java.util.List;
 import java.util.Scanner;
 
 public class GymFlipFitOwnerMenu {
 
-    /**
-     * getFlipFitOwnerView
-     * @param gymOwner
-     * @throws InvalidChoiceException
-     */
     public static void getFlipFitOwnerView(FlipFitUser gymOwner) throws InvalidChoiceException {
         try {
-            FlipFitGymOwnerDAOImpl flipFitGymOwnerDAO = new FlipFitGymOwnerDAOImpl();
+
             FlipFitGymOwnerBusiness GOBservice = new FlipFitGymOwnerBusiness();
 
             Scanner sc = new Scanner(System.in);
@@ -77,21 +66,12 @@ public class GymFlipFitOwnerMenu {
                     }
 
                     case 2: {
-                        System.out.println( "=========== View Centres for the owner =========== " );
-
-                        FlipFitGymOwner flipFitGymOwner = new FlipFitGymOwner();
-                        flipFitGymOwner.setUserId(gymOwner.getUserID());
-
-                        List<FlipFitGymCentre> centreList = GOBservice.viewCentres(flipFitGymOwner);
-                        for (FlipFitGymCentre centre : centreList) {
-                            System.out.println( "CentreID: " + centre.getCentreID() + ", Capacity: " + centre.getCapacity() + ", City: " + centre.getCity() + ", State: " + centre.getState());
-                        }
-
+                        System.out.println( "View Centres for the owner" );
                         break;
                     }
 
                     case 3: {
-                        System.out.println("=========== Add Slot in a Gym =========== ");
+                        System.out.println("Add Slot in a Gym");
 
                         System.out.print( "Enter gym centre ID:> " );
                         int centreId = sc.nextInt();
@@ -108,8 +88,6 @@ public class GymFlipFitOwnerMenu {
                         slot.setSeatsAvailable(maxCapacity);
                         slot.setMaxCapacity(maxCapacity);
 
-                        FlipFitSlotDAOImpl slotDAO = new FlipFitSlotDAOImpl();
-                        slotDAO.addSlot(slot);
 
                         System.out.println("Slot created successfully with Slot Time: "+ slot.getSlotTime() + " and maximum Capacity: " + slot.getMaxCapacity() );
                         break;
@@ -124,8 +102,6 @@ public class GymFlipFitOwnerMenu {
                         System.out.print("Enter slot ID:> ");
                         int slotId = sc.nextInt();
 
-                        FlipFitSlotDAOImpl slotDAO = new FlipFitSlotDAOImpl();
-                        slotDAO.deleteSlot(centreId, slotId);
 
                         System.out.println("Slot deleted successfully.");
                         break;

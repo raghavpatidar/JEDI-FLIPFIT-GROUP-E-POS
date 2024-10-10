@@ -1,8 +1,6 @@
 package com.flipkart.business;
-import com.flipkart.dao.interfaces.IFlipFitAdminDAO;
 import com.flipkart.bean.*;
 import com.flipkart.business.interfaces.IFlipFitAdmin;
-import com.flipkart.dao.FlipFitAdminDAOImpl;
 
 import java.util.List;
 

@@ -2,7 +2,6 @@ package com.flipkart.business;
 import com.flipkart.bean.FlipFitGymCentre;
 import com.flipkart.bean.FlipFitSlots;
 import com.flipkart.business.interfaces.IFlipFitGymCentre;
-import com.flipkart.dao.FlipFitGymCentreDAOImpl;
 import java.util.Collections;
 import java.util.List;
 

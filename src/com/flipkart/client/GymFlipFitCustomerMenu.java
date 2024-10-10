@@ -14,11 +14,7 @@ import java.util.Scanner;
 import java.util.List;
 
 public class GymFlipFitCustomerMenu {
-    /**
-     * getFlipFitCustomerMenu
-     * @param gymCustomer
-     * @throws InvalidChoiceException
-     */
+
     public static void getFlipFitCustomerMenu(FlipFitUser gymCustomer) throws InvalidChoiceException {
         try {
             int userId = gymCustomer.getUserID();
@@ -32,22 +28,20 @@ public class GymFlipFitCustomerMenu {
             int choice = 0;
 
             do {
-                System.out.println( "===========================" );
-                System.out.println("    FlipFit Customer Menu   " );
-                System.out.println( "===========================");
 
+                System.out.println("    FlipFit Customer Menu   " );
                 System.out.println( """
                         Choose an option:
                          1. View Booked Slots
                          2. View Centres
-                         3. Logout
+                         3. Logout \n
                         """ );
 
                 choice = sc.nextInt();
 
                 switch (choice) {
                     case 1: {
-                        System.out.println("=========== View Booked Slots ===========" );
+                        System.out.println("View Booked Slots" );
                         FCBservice.viewBookedSlots(userId);
 
                         System.out.println( "Type 1. If you wish to cancel" );
@@ -64,30 +58,7 @@ public class GymFlipFitCustomerMenu {
                         break;
                     }
                     case 2: {
-                        System.out.println("=========== View Centres ===========" );
-
-                        List<FlipFitGymCentre> centreList = FCBservice.viewCentres();
-                        for (FlipFitGymCentre centre : centreList) {
-                            System.out.println( "CentreId: " + centre.getCentreID() + ", City: " + centre.getCity() + ", Pincode: " + centre.getPincode() );
-                        }
-
-                        System.out.print("Choose a centre you want to book a slot in:> ");
-                        int centreId = sc.nextInt();
-
-                        List<FlipFitSlots> slotsList = FCService.viewAvailableSlots(centreId);
-                        System.out.println("These are the available slots:" );
-                        for (FlipFitSlots flipFitSlots : slotsList) {
-                            System.out.println( "Slot Id: " + flipFitSlots.getSlotId() + ", Slot Timing: " + flipFitSlots.getSlotTime() + ", Availability: " + flipFitSlots.getSeatsAvailable() + ", CentreId: " + flipFitSlots.getCentreId() );
-                        }
-
-                        System.out.print( "Give the start time you wish to book:> " );
-                        int startTime = sc.nextInt();
-
-                        System.out.print( "Give the centre ID:> " );
-                        int centreID = sc.nextInt();
-
-                        BService.makeBooking(userId, centreID, startTime);
-
+                        System.out.println("View Centres" );
                         break;
                     }
                     case 3: {

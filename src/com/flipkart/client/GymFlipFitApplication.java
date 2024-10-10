@@ -8,9 +8,6 @@ import com.flipkart.business.FlipFitAdminBusiness;
 import com.flipkart.business.FlipFitGymCustomerBusiness;
 import com.flipkart.business.FlipFitGymOwnerBusiness;
 import com.flipkart.business.interfaces.IFlipFitAdmin;
-import com.flipkart.dao.FlipFitAdminDAOImpl;
-import com.flipkart.dao.FlipFitGymCustomerDAOImpl;
-import com.flipkart.dao.FlipFitGymOwnerDAOImpl;
 import com.flipkart.exceptions.ExceptionHandler;
 import com.flipkart.exceptions.InvalidChoiceException;
 
@@ -31,14 +28,14 @@ public class GymFlipFitApplication {
                          1 -> Login
                          2 -> Registration of Customer
                          3 -> Registration of Gym Owner
-                         4 -> Exit
+                         4 -> Exit \n
                         """ );
 
                 choice = in.nextInt();
 
                 switch (choice) {
                     case 1: {
-                        System.out.println("=========== Login ===========" );
+                        System.out.println("Login" );
                         System.out.print( "Enter your emailId:> " );
                         String username = in.next();
                         System.out.print(  "Enter your password:> " );
@@ -51,12 +48,10 @@ public class GymFlipFitApplication {
                                 FlipFitUser gymCustomer = new FlipFitUser();
                                 gymCustomer.setEmailID(username);
                                 gymCustomer.setPassword(password);
-
-                                FlipFitGymCustomerDAOImpl flipFitGymCustomerDAO = new FlipFitGymCustomerDAOImpl();
                                 FlipFitGymCustomerBusiness GCBservice = new FlipFitGymCustomerBusiness();
 
                                 gymCustomer = GCBservice.login(gymCustomer);
-                                System.out.println( "=========== Customer Menu ===========" );
+                                System.out.println( "Customer Menu" );
                                 GymFlipFitCustomerMenu.getFlipFitCustomerMenu(gymCustomer);
                                 break;
                             }
@@ -64,8 +59,6 @@ public class GymFlipFitApplication {
                                 FlipFitAdmin admin = new FlipFitAdmin();
                                 admin.setEmailID(username);
                                 admin.setPassword(password);
-
-                                FlipFitAdminDAOImpl adminDAO = new FlipFitAdminDAOImpl();
                                 IFlipFitAdmin flipFitAdmin = new FlipFitAdminBusiness();
                                 boolean res = flipFitAdmin.adminLogin(admin);
                                 if (res) {
@@ -78,8 +71,6 @@ public class GymFlipFitApplication {
                                 FlipFitUser gymOwner = new FlipFitUser();
                                 gymOwner.setEmailID(username);
                                 gymOwner.setPassword(password);
-
-                                FlipFitGymOwnerDAOImpl flipFitGymOwnerDAO = new FlipFitGymOwnerDAOImpl();
                                 FlipFitGymOwnerBusiness GOBservice = new FlipFitGymOwnerBusiness();
 
                                 gymOwner = GOBservice.login(gymOwner);
@@ -92,7 +83,7 @@ public class GymFlipFitApplication {
                     }
 
                     case 2: {
-                        System.out.println("=========== Registration of Gym Customer ===========" );
+                        System.out.println("Registration of Gym Customer" );
 
                         System.out.print("Enter your email address:> " );
                         String emailID = in.next();
@@ -117,8 +108,6 @@ public class GymFlipFitApplication {
                         gymCustomer.setPassword(password);
                         gymCustomer.setPhoneNumber(phoneNumber);
                         gymCustomer.setUserName(username);
-
-                        FlipFitGymCustomerDAOImpl flipFitGymCustomerDAO = new FlipFitGymCustomerDAOImpl();
                         FlipFitGymCustomerBusiness GCBservice = new FlipFitGymCustomerBusiness();
 
                         FlipFitGymCustomer flipFitGymCustomer = new FlipFitGymCustomer();
@@ -133,14 +122,14 @@ public class GymFlipFitApplication {
                         flipFitGymCustomer = GCBservice.registerCustomer(flipFitGymCustomer);
                         gymCustomer.setUserID(flipFitGymCustomer.getUserId());
                         System.out.println("Registration completed for " + gymCustomer.getUserName());
-                        System.out.println("=========== Customer Menu ===========");
+                        System.out.println("Customer Menu");
 
                         GymFlipFitCustomerMenu.getFlipFitCustomerMenu(gymCustomer);
                         break;
                     }
 
                     case 3: {
-                        System.out.println("=========== Registration of Gym Owner ===========");
+                        System.out.println("Registration of Gym Owner");
 
                         System.out.print( "Enter your email address:> ");
                         String emailID = in.next();
@@ -181,13 +170,9 @@ public class GymFlipFitApplication {
                         flipFitOwner.setAadharNumber(aadharNumber);
                         flipFitOwner.setPanId(panId);
                         flipFitOwner.setIsApproved(false);
-
-                        FlipFitGymOwnerDAOImpl flipFitGymOwnerDAO = new FlipFitGymOwnerDAOImpl();
                         FlipFitGymOwnerBusiness GOBservice = new FlipFitGymOwnerBusiness();
-
                         GOBservice.registerOwner(flipFitOwner);
                         System.out.println("Successfully registered " + flipFitOwner.getUserName());
-
                         break;
                     }
 
